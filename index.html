@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shubham's Cinema</title>
+  <link rel="icon" href="movie-ticket.png" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="main.css" />
+</head>
+<body>
+
+  <!-- LEFT PANEL -->
+  <aside class="panel-left">
+
+    <header class="site-header">
+      <div class="header-top">
+        <div class="title-block">
+          <span class="label">My personal archive of</span>
+          <h1>Cinema</h1>
+        </div>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+          <span class="toggle-icon">◐</span>
+        </button>
+      </div>
+      <p class="film-count"><span id="totalCount">—</span> films watched and many more to come...</p>
+    </header>
+
+    <div class="search-block">
+      <div class="search-wrap">
+        <svg class="search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        <input type="text" id="searchInput" class="search-input"
+          placeholder="title, genre, language…" autocomplete="off" spellcheck="false" />
+        <button class="clear-btn" id="clearBtn" aria-label="Clear">✕</button>
+      </div>
+
+      <div class="filter-row">
+        <button class="filter-pill active" data-filter="all">All</button>
+        <button class="filter-pill" data-filter="5">★ 5</button>
+        <button class="filter-pill" data-filter="4">★ 4+</button>
+        <button class="filter-pill" data-filter="3">★ 3+</button>
+      </div>
+    </div>
+
+    <div class="results-meta"><span id="resultsCount"></span></div>
+
+    <ul class="movie-list" id="movieList"></ul>
+
+  </aside>
+
+  <!-- RIGHT PANEL: Visualization -->
+  <main class="panel-right">
+
+    <div class="viz-container" id="vizContainer">
+      <svg id="mainViz"></svg>
+
+      <!-- Hover / click card -->
+      <div class="tooltip" id="tooltip">
+        <div class="tooltip-poster" id="tooltipPoster">
+          <span class="poster-emoji">🎬</span>
+        </div>
+        <div class="tooltip-body">
+          <p class="tooltip-title"  id="tooltipTitle"></p>
+          <p class="tooltip-year"   id="tooltipYear"></p>
+          <div class="tooltip-ratings">
+            <span class="badge imdb" id="tooltipImdb"></span>
+            <span class="badge mine" id="tooltipMine"></span>
+          </div>
+          <p class="tooltip-genre"  id="tooltipGenre"></p>
+          <p class="tooltip-lang"   id="tooltipLang"></p>
+          <p class="tooltip-source" id="tooltipSource"></p>
+          <p class="tooltip-summary" id="tooltipSummary"></p>
+          <div class="tooltip-tags" id="tooltipTags"></div>
+        </div>
+      </div>
+
+      <!-- Hint text -->
+      <p class="viz-hint">hover to explore · click to expand</p>
+    </div>
+
+    <!-- Legend -->
+    <footer class="legend" id="legend">
+      <span class="legend-note">size = IMDb rating &nbsp;·&nbsp; colour = genre &nbsp;·&nbsp; lines = same genre</span>
+      <div class="legend-genres" id="legendGenres"></div>
+    </footer>
+
+  </main>
+
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
